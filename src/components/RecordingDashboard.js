@@ -2,19 +2,17 @@ import React from "react";
 import {Typography} from "@material-ui/core";
 import Recorder from "./Recorder";
 
-const formattedDateTime = () => {
-    let currentDateObj = new Date()
-    return `${currentDateObj.getMonth()}-${currentDateObj.getDate()}-${currentDateObj.getFullYear()}_${currentDateObj.getHours()}:${currentDateObj.getMinutes()}`
-}
+
 
 const getTimeComponents = (milliSec) => {
     let newMilliSec = milliSec % 100
     let sec = Math.floor(milliSec / 100)
     let min = Math.floor(sec / 60)
+    sec %= 60
     return [min, sec, newMilliSec]
 }
 
-export default function RecordingDashboard({paused, open, durationMilliSec, setDurationMilliSec, count}) {
+export default function RecordingDashboard({paused, open, durationMilliSec, setDurationMilliSec, recordingName}) {
     // let [durationMilliSec, setDurationMilliSec] = React.useState(0)
     React.useEffect(() => {
         let intervalHandler = setInterval(
@@ -22,7 +20,6 @@ export default function RecordingDashboard({paused, open, durationMilliSec, setD
         )
         return () => clearInterval(intervalHandler)
     }, [paused, setDurationMilliSec])
-    const recordingName = `New Idea_${count+1}_${formattedDateTime()}`
     return (
         <React.Fragment>
             <Typography variant={'h6'} color={'textPrimary'} gutterBottom>

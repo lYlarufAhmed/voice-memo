@@ -1,28 +1,32 @@
 import React, {
     useCallback,
-    useRef,
+    useRef, useState,
 } from "react";
-import styled from "styled-components";
 import {WaveSurfer, WaveForm} from "wavesurfer-react";
+import {
+    IconButton,
+    ListItem,
+    ListItemIcon,
+    ListItemSecondaryAction,
+    ListItemText,
+    makeStyles,
+    Typography
+} from "@material-ui/core";
+import {Delete, DeleteOutlined, PauseCircleFilled, PlayCircleFilled} from "@material-ui/icons";
 
+const useStyles = makeStyles((theme) => ({
 
-const AppWrapper = styled.div`
-  font-family: sans-serif;
-  text-align: center;
-  width: 90vw;
-  // display: inline-block;
-  border: 1px dotted;
-  padding: 1rem 1rem;
-`;
+    iconColor: {
+        color: '#EA1073'
+    },
+}))
 
-const Button = styled.button`
-  // width: 3rem;
-  // padding: .5rem;
-`;
-
-
-export default function Track({url, count}) {
+export default function Track({url, title, count, handleDelete}) {
+    const classes = useStyles()
     const wavesurferRef = useRef();
+    const [playing, setPlaying] = useState(false)
+    const [duration, setDuration] = useState(0)
+    // const [deleted, setDeleted] = useState(false)
     const handleWSMount = useCallback(
         (waveSurfer) => {
             wavesurferRef.current = waveSurfer;
@@ -32,12 +36,19 @@ export default function Track({url, count}) {
 
                 wavesurferRef.current.on("ready", () => {
                     console.log("WaveSurfer is ready");
+                    setDuration(wavesurferRef.current.getDuration())
                 });
+
+                wavesurferRef.current.on('finish', () => {
+                    console.log('track End')
+                    setPlaying(false)
+                })
 
 
                 wavesurferRef.current.on("loading", data => {
                     console.log("loading --> ", data);
                 });
+
 
                 if (window) {
                     window.surferidze = wavesurferRef.current;
@@ -47,19 +58,46 @@ export default function Track({url, count}) {
         [url]
     );
 
-
+    const deleteTrack = useCallback(() => {
+        // setDeleted(true)
+        // if ()
+        wavesurferRef.current.destroy()
+        handleDelete(title)
+    }, [handleDelete, title])
     const play = useCallback(() => {
         wavesurferRef.current.playPause();
+        setPlaying(prevState => !prevState)
     }, []);
 
     return (
-        <AppWrapper>
-            <Button onClick={play}>Play / Pause</Button>
-            <WaveSurfer onMount={handleWSMount}>
-                <WaveForm cursorColor={'#00000000'} height={10} id={ `waveform-${count}` }>
-                </WaveForm>
-            </WaveSurfer>
-        </AppWrapper>
+        <ListItem button>
+            <ListItemIcon>
+                {playing ? < PauseCircleFilled onClick={play} className={classes.iconColor} fontSize={'large'}/> :
+                    <PlayCircleFilled onClick={play} className={classes.iconColor} fontSize={'large'}/>}
+            </ListItemIcon>
+            {/*<Typography variant={'subtitle2'}>{duration}</Typography>*/}
+            {/*<button onClick={play}>Play / Pause</button>*/}
+            <ListItemText>
+                <React.Fragment>
+                    <Typography variant={'subtitle1'}>{title}</Typography>
+                    <WaveSurfer onMount={handleWSMount}>
+                        <WaveForm waveColor={'f4f2f2'} cursorColor={'#00000000'} progressColor={'#EA1073'} height={50} id={`waveform-${count}`}>
+                        </WaveForm>
+                    </WaveSurfer>
+                </React.Fragment>
+            </ListItemText>
+            <ListItemSecondaryAction>
+                <IconButton
+                    edge="end"
+                    // onChange={handleToggle('bluetooth')}
+                    onClick={deleteTrack}
+                    // inputProps={{'aria-labelledby': 'switch-list-label-bluetooth'}}
+                    children={<Delete className={classes.iconColor}/>}
+                />
+            </ListItemSecondaryAction>
+
+        </ListItem>
+
     );
 }
 

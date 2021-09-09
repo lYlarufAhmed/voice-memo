@@ -1,11 +1,15 @@
 import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {useScrollTrigger} from "@material-ui/core";
+import {List, Paper, Typography, useScrollTrigger} from "@material-ui/core";
 import RecorderBar from "./RecorderBar";
 import {useReactMediaRecorder} from "react-media-recorder";
 import Track from "./Track";
 
+const formattedDateTime = () => {
+    let currentDateObj = new Date()
+    return `${currentDateObj.getMonth()}-${currentDateObj.getDate()}-${currentDateObj.getFullYear()}_${currentDateObj.getHours().toString().padStart(2, '0')}:${currentDateObj.getMinutes().toString().padStart(2, '0')}`
+}
 
 function ElevationScroll(props) {
     const {children, window} = props;
@@ -24,12 +28,20 @@ function ElevationScroll(props) {
 }
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
     hide: {
         display: 'none',
     },
+    // Paper
+    text: {
+        padding: theme.spacing(2, 2, 0),
+    },
+    paper: {
+        paddingBottom: 50,
+    },
+    list: {
+        marginBottom: theme.spacing(2),
+    },
+
 
 }));
 let milliSecElapsed = 0
@@ -37,10 +49,13 @@ let milliSecElapsed = 0
 export default function App() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
-    let [blobs, setBlobs] = React.useState([])
+    let [tracks, setTracks] = React.useState({
+        'test_track': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'}
+    })
     let [paused, setPaused] = React.useState(false)
     let [durationMilliSec, setDurationMilliSec] = React.useState(milliSecElapsed)
 
+    const recordingName = `New_Idea_${Object.entries(tracks).length + 1}_${formattedDateTime()}`
     const {
         status,
         startRecording,
@@ -50,14 +65,22 @@ export default function App() {
         // mediaBlobUrl,
     } = useReactMediaRecorder(
         {
-            audio: true, onStop: (blobUrl) => setBlobs(prevState => {
+            audio: true, onStop: (blobUrl) => setTracks(prevState => {
                 console.log(blobUrl, prevState)
-                if (!prevState.includes(blobUrl))
-                    prevState.push(blobUrl)
                 // console.log('pushed', prevState)
-                return prevState.slice()
+                prevState[recordingName] = {
+                    url: blobUrl
+                }
+                return JSON.parse(JSON.stringify(prevState))
             })
         });
+
+    const deleteTrack = (title) => {
+        setTracks(prevState => {
+            delete prevState[title]
+            return JSON.parse(JSON.stringify(prevState))
+        })
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -90,32 +113,37 @@ export default function App() {
     }
 
     return (
-        <div className={classes.root}>
-            <CssBaseline/>
+        <div
+            // className={classes.root}
+        >
 
-            {/*{status}*/}
-            <ElevationScroll>
-                <RecorderBar open={open} status={status}
-                             handleDrawerClose={handleDrawerClose}
-                             paused={paused}
-                             handleDrawerOpen={handleDrawerOpen}
-                             pauseRecording={handlePause}
-                             resumeRecording={handleResume}
-                             durationMilliSec={durationMilliSec}
-                             setDurationMilliSec={setDurationMilliSec}
-                             count={blobs.length}
-                />
-            </ElevationScroll>
-            <main
-                // className={clsx(classes.content, {
-                //     [classes.contentShift]: open,
-                // })}
-            >
-                {/*<Recorder/>*/}
-                {/*{blobs.map((b, i) =>  key={i}/>)}*/}
-                <Track url={'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'} count={-1}/>
-                {blobs.map((b, i) => <Track url={b} key={i} count={i?i+1:1}/>)}
-            </main>
+            <CssBaseline/>
+            <Paper square classeName={classes.paper}>
+
+                {/*{status}*/}
+                <ElevationScroll>
+                    <RecorderBar open={open} status={status}
+                                 handleDrawerClose={handleDrawerClose}
+                                 paused={paused}
+                                 handleDrawerOpen={handleDrawerOpen}
+                                 pauseRecording={handlePause}
+                                 resumeRecording={handleResume}
+                                 durationMilliSec={durationMilliSec}
+                                 setDurationMilliSec={setDurationMilliSec}
+                                 recordingName={recordingName}
+                    />
+                </ElevationScroll>
+
+                <List className={classes.list}>
+                    {Object.entries(tracks).map(
+                        ([title, {url}], i) => <Track url={url} title={title}
+                                                      key={title}
+                                                      count={i}
+                                                      handleDelete={deleteTrack}
+                        />)}
+                    {!Object.entries( tracks ).length && <Typography variant={'h4'} align={'center'}>No items</Typography>}
+                </List>
+            </Paper>
         </div>
     );
 }

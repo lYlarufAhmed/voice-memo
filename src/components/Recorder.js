@@ -56,7 +56,7 @@ export default function Recorder({open, paused}) {
     return (
         <AppWrapper>
             <WaveSurfer plugins={plugins} onMount={handleWSMount}>
-                <WaveForm cursorColor={'#00000000'} height={20} id="rec-waveform">
+                <WaveForm cursorColor={'#00000000'} height={100} barGap={2} barWidth={3} id="rec-waveform">
                 </WaveForm>
             </WaveSurfer>
         </AppWrapper>

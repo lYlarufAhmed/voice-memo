@@ -13,7 +13,7 @@ import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
 
 const openDrawer = (status, paused) => status === 'recording' || paused
-const drawerHeight = 200;
+const drawerHeight = 300;
 const useStyles = makeStyles((theme) => ({
     appBar: {
         transition: theme.transitions.create(['margin', 'height'], {
@@ -45,7 +45,7 @@ export default function RecorderBar({
                                         paused,
                                         status, open, pauseRecording, resumeRecording,
                                         handleDrawerClose, handleDrawerOpen,
-                                        durationMilliSec, setDurationMilliSec,count
+                                        durationMilliSec, setDurationMilliSec, recordingName
                                     }) {
 
     const classes = useStyles()
@@ -58,7 +58,7 @@ export default function RecorderBar({
         >
             {openDrawer(status, paused) && <RecordingDashboard
                 paused={paused} setDurationMilliSec={setDurationMilliSec}
-                durationMilliSec={durationMilliSec} open={open} count={count}
+                durationMilliSec={durationMilliSec} open={open} recordingName={recordingName}
 
             />}
 
