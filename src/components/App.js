@@ -1,12 +1,13 @@
 import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {Box, List, Paper, Typography, useScrollTrigger} from "@material-ui/core";
+import {Box, List, ListItemText, Paper, Typography, useScrollTrigger} from "@material-ui/core";
 import {useReactMediaRecorder} from "react-media-recorder";
 import Track from "./Track";
 import AppBar from "@material-ui/core/AppBar";
 import clsx from "clsx";
 import RecorderContainer from "./RecorderContainer";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 const formattedDateTime = () => {
     let currentDateObj = new Date()
@@ -30,6 +31,12 @@ function ElevationScroll(props) {
 const openDrawer = (status, paused) => status === 'recording' || paused
 const drawerHeight = 300;
 const useStyles = makeStyles((theme) => ({
+    root: {
+        display: "flex",
+        backgroundColor: "yellow",
+        maxHeight: '100vh'
+    }
+    ,
     hide: {
         display: 'none',
     },
@@ -38,13 +45,19 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(2, 2, 0),
     },
     paper: {
-        paddingBottom: 50,
+        // paddingBottom: 50,
+        flexBasis: '50%',
+        flexGrow: 1,
+        overflowY: 'scroll',
+        overflowX: 'hidden'
     },
     list: {
-        paddingBottom: 70,
         position: 'relative'
     },
-
+    listPadding: {
+        paddingBottom: 70,
+    },
+    flexGrow: {flexGrow: 1, display: 'grid', placeItems: 'center', flexBasis: '50%'},
     appBar: {
         transition: theme.transitions.create(['margin', 'height'], {
             easing: theme.transitions.easing.sharp,
@@ -81,6 +94,7 @@ const useStyles = makeStyles((theme) => ({
 let milliSecElapsed = 0
 
 export default function App() {
+    const matches = useMediaQuery('(min-width:769px)');
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     let [tracks, setTracks] = React.useState({
@@ -159,12 +173,47 @@ export default function App() {
 
     return (
         <div
+            className={classes.root}
         >
 
             <CssBaseline/>
-            <Paper square classeName={classes.paper}>
+            <Paper square className={classes.paper}>
 
-                <ElevationScroll>
+
+                <List className={clsx(classes.list, {[classes.listPadding]: !matches})}>
+                    {matches &&
+                    <ListItemText>
+                        Desktop View
+                    </ListItemText>}
+                    {Object.entries(tracks).map(
+                        ([title, {url}], i) => <Track url={url} title={title}
+                                                      key={title}
+                                                      count={i}
+                                                      handleDelete={deleteTrack}
+                        />)}
+                    {!Object.entries(tracks).length &&
+                    <Typography variant={'h4'} align={'center'}>No items</Typography>}
+                    {/* TODO: overlay should only be in mobile view*/}
+                    {!matches &&
+                    <Box className={clsx(classes.overlay, {
+                        [classes.overlayShow]: open,
+                    })}/>}
+                </List>
+
+            </Paper>
+            {
+                matches ? <Paper className={classes.flexGrow}>
+                    <RecorderContainer open={open} paused={paused}
+                                       handleDrawerOpen={handleDrawerOpen}
+                                       handleDrawerClose={handleDrawerClose}
+                                       pauseRecording={handlePause}
+                                       recordingName={recordingName}
+                                       durationMilliSec={durationMilliSec}
+                                       setDurationMilliSec={setDurationMilliSec}
+                                       resumeRecording={handleResume}
+                                       isDrawerOpen={openDrawer(status, paused)}
+                    />
+                </Paper> : <ElevationScroll>
                     <AppBar
                         position="fixed"
                         className={clsx(classes.appBar, {
@@ -183,23 +232,7 @@ export default function App() {
                         />
                     </AppBar>
                 </ElevationScroll>
-
-                <List className={classes.list}>
-                    {Object.entries(tracks).map(
-                        ([title, {url}], i) => <Track url={url} title={title}
-                                                      key={title}
-                                                      count={i}
-                                                      handleDelete={deleteTrack}
-                        />)}
-                    {!Object.entries(tracks).length &&
-                    <Typography variant={'h4'} align={'center'}>No items</Typography>}
-                    {/* TODO: overlay should only be in mobile view*/}
-                    <Box className={clsx(classes.overlay, {
-                        [classes.overlayShow]: open,
-                    })}/>
-                </List>
-
-            </Paper>
+            }
         </div>
     );
 }
