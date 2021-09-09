@@ -12,7 +12,7 @@ import {
     makeStyles,
     Typography
 } from "@material-ui/core";
-import {Delete, DeleteOutlined, PauseCircleFilled, PlayCircleFilled} from "@material-ui/icons";
+import {Delete, PauseCircleFilled, PlayCircleFilled} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
 
@@ -25,7 +25,7 @@ export default function Track({url, title, count, handleDelete}) {
     const classes = useStyles()
     const wavesurferRef = useRef();
     const [playing, setPlaying] = useState(false)
-    const [duration, setDuration] = useState(0)
+    const [, setDuration] = useState(0)
     // const [deleted, setDeleted] = useState(false)
     const handleWSMount = useCallback(
         (waveSurfer) => {
@@ -81,7 +81,8 @@ export default function Track({url, title, count, handleDelete}) {
                 <React.Fragment>
                     <Typography variant={'subtitle1'}>{title}</Typography>
                     <WaveSurfer onMount={handleWSMount}>
-                        <WaveForm waveColor={'f4f2f2'} cursorColor={'#00000000'} progressColor={'#EA1073'} height={50} id={`waveform-${count}`}>
+                        <WaveForm waveColor={'f4f2f2'} cursorColor={'#00000000'} progressColor={'#EA1073'} height={50}
+                                  id={`waveform-${count}`}>
                         </WaveForm>
                     </WaveSurfer>
                 </React.Fragment>

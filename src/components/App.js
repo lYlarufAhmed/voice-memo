@@ -1,7 +1,7 @@
 import React from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {List, Paper, Typography, useScrollTrigger} from "@material-ui/core";
+import {Box, List, Paper, Typography, useScrollTrigger} from "@material-ui/core";
 import {useReactMediaRecorder} from "react-media-recorder";
 import Track from "./Track";
 import AppBar from "@material-ui/core/AppBar";
@@ -15,9 +15,7 @@ const formattedDateTime = () => {
 
 function ElevationScroll(props) {
     const {children, window} = props;
-    // Note that you normally won't need to set the window ref as useScrollTrigger
-    // will default to window.
-    // This is only being set here because the demo is in an iframe.
+
     const trigger = useScrollTrigger({
         disableHysteresis: true,
         threshold: 0,
@@ -43,7 +41,8 @@ const useStyles = makeStyles((theme) => ({
         paddingBottom: 50,
     },
     list: {
-        marginBottom: theme.spacing(2),
+        paddingBottom: 70,
+        position: 'relative'
     },
 
     appBar: {
@@ -64,6 +63,20 @@ const useStyles = makeStyles((theme) => ({
             duration: theme.transitions.duration.leavingScreen,
         }),
     },
+    overlay: {
+        height: '100%',
+        backgroundColor: 'black',
+        padding: '4rem',
+        position: 'absolute',
+        width: '100%',
+        top: 0,
+        display: 'none',
+        opacity: '.4'
+    },
+    overlayShow: {
+        display: 'block'
+    }
+
 }));
 let milliSecElapsed = 0
 
@@ -71,7 +84,15 @@ export default function App() {
     const classes = useStyles();
     const [open, setOpen] = React.useState(false);
     let [tracks, setTracks] = React.useState({
-        'test_track': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'}
+        'test_track': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+        'test_track_1': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+        'test_track_2': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+        'test_track_3': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+        'test_track_4': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+        'test_track_5': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+        'test_track_6': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+        'test_track_7': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+        'test_track_8': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
     })
     let [paused, setPaused] = React.useState(false)
     let [durationMilliSec, setDurationMilliSec] = React.useState(milliSecElapsed)
@@ -112,6 +133,7 @@ export default function App() {
         setOpen(false);
         stopRecording()
         setPaused(false)
+        setDurationMilliSec(0)
     };
     const handlePause = async () => {
         try {
@@ -132,6 +154,8 @@ export default function App() {
             console.log(e.message)
         }
     }
+
+    // const handleCloseDialogue=() => setOpenDialogue(false)
 
     return (
         <div
@@ -169,7 +193,12 @@ export default function App() {
                         />)}
                     {!Object.entries(tracks).length &&
                     <Typography variant={'h4'} align={'center'}>No items</Typography>}
+                    {/* TODO: overlay should only be in mobile view*/}
+                    <Box className={clsx(classes.overlay, {
+                        [classes.overlayShow]: open,
+                    })}/>
                 </List>
+
             </Paper>
         </div>
     );
