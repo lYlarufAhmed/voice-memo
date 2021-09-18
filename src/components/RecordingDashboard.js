@@ -1,5 +1,5 @@
 import React from "react";
-import {Typography} from "@material-ui/core";
+import {Typography, Container} from "@material-ui/core";
 import Recorder from "./Recorder";
 
 
@@ -21,7 +21,7 @@ export default function RecordingDashboard({paused, open, durationMilliSec, setD
         return () => clearInterval(intervalHandler)
     }, [paused, setDurationMilliSec])
     return (
-        <React.Fragment>
+        <Container maxWidth={'sm'} style={{'textAlign': 'center'}}>
             <Typography variant={'h6'} color={'textPrimary'} gutterBottom>
                 {recordingName}
             </Typography>
@@ -31,6 +31,6 @@ export default function RecordingDashboard({paused, open, durationMilliSec, setD
                     .join(':')}
                 <Recorder open={open} paused={paused}/>
             </Typography>
-        </React.Fragment>
+        </Container>
     )
 }

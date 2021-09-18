@@ -82,7 +82,9 @@ export default function Track({url, title, count, handleDelete}) {
                     <Typography variant={'subtitle1'}>{title}</Typography>
                     <WaveSurfer onMount={handleWSMount}>
                         <WaveForm waveColor={'f4f2f2'} cursorColor={'#00000000'} progressColor={'#EA1073'} height={50}
-                                  id={`waveform-${count}`}>
+                                  id={`waveform-${count}`} fillParent={false} responsive={true}
+                                  pixelRatio={1}
+                                  >
                         </WaveForm>
                     </WaveSurfer>
                 </React.Fragment>

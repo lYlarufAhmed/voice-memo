@@ -10,6 +10,7 @@ import MicrophonePlugin from "wavesurfer.js/src/plugin/microphone";
 const AppWrapper = styled.div`
   font-family: sans-serif;
   text-align: center;
+  width: 100%;
 `;
 
 
@@ -56,7 +57,10 @@ export default function Recorder({open, paused}) {
     return (
         <AppWrapper>
             <WaveSurfer plugins={plugins} onMount={handleWSMount}>
-                <WaveForm cursorColor={'#00000000'} height={100} barGap={2} barWidth={3} id="rec-waveform">
+                <WaveForm cursorColor={'#00000000'} height={100} barGap={2} barWidth={3} id="rec-waveform"
+                    fillParent={true} responsive={true} barMinHeight={1}
+                    barHeight={70}
+                >
                 </WaveForm>
             </WaveSurfer>
         </AppWrapper>
