@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: "flex",
         backgroundColor: "yellow",
-        maxHeight: '100vh'
+        height: '100vh'
     }
     ,
     hide: {
@@ -99,14 +99,6 @@ export default function App() {
     const [open, setOpen] = React.useState(false);
     let [tracks, setTracks] = React.useState({
         'test_track': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-        'test_track_1': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-        'test_track_2': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-        'test_track_3': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-        'test_track_4': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-        'test_track_5': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-        'test_track_6': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-        'test_track_7': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-        'test_track_8': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
     })
     let [paused, setPaused] = React.useState(false)
     let [durationMilliSec, setDurationMilliSec] = React.useState(milliSecElapsed)
