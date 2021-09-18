@@ -4,7 +4,7 @@ import IconButton from "@material-ui/core/IconButton";
 import clsx from "clsx";
 import {ReactComponent as Stop} from "../svgs/Stop.svg";
 import {ReactComponent as Record} from "../svgs/Record.svg";
-import {ReactComponent as Play} from "../svgs/Play.svg";
+import {ReactComponent as Resume} from "../svgs/Resume.svg";
 import {ReactComponent as Pause} from "../svgs/Pause.svg";
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
@@ -56,7 +56,7 @@ export default function RecorderContainer({
                     className={clsx(classes.menuButton)}
                     size={'small'}
                 >
-                    {paused ? <Play/> : <Pause/>}
+                    {paused ? <Resume/> : <Pause/>}
 
                 </IconButton>
                 }
