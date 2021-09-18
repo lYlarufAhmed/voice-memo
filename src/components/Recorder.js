@@ -59,7 +59,7 @@ export default function Recorder({open, paused}) {
             <WaveSurfer plugins={plugins} onMount={handleWSMount}>
                 <WaveForm cursorColor={'#00000000'} height={100} barGap={2} barWidth={3} id="rec-waveform"
                     fillParent={true} responsive={true} barMinHeight={1}
-                    barHeight={70}
+                    barHeight={30}
                 >
                 </WaveForm>
             </WaveSurfer>
