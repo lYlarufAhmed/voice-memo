@@ -8,6 +8,8 @@ import AppBar from "@material-ui/core/AppBar";
 import clsx from "clsx";
 import RecorderContainer from "./RecorderContainer";
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
 
 const formattedDateTime = () => {
     let currentDateObj = new Date()
@@ -92,6 +94,9 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 let milliSecElapsed = 0
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 export default function App() {
     const matches = useMediaQuery('(min-width:769px)');
@@ -104,6 +109,7 @@ export default function App() {
     let [durationMilliSec, setDurationMilliSec] = React.useState(milliSecElapsed)
 
     const recordingName = `New_Idea_${Object.entries(tracks).length + 1}_${formattedDateTime()}`
+    const [snackOpen, setSnackOpen] = React.useState(false)
     const {
         status,
         startRecording,
@@ -140,6 +146,7 @@ export default function App() {
         stopRecording()
         setPaused(false)
         setDurationMilliSec(0)
+        setSnackOpen(true)
     };
     const handlePause = async () => {
         try {
@@ -161,7 +168,7 @@ export default function App() {
         }
     }
 
-    // const handleCloseDialogue=() => setOpenDialogue(false)
+    const handleSnackClose=() => setSnackOpen(false)
 
     return (
         <div
@@ -169,6 +176,18 @@ export default function App() {
         >
 
             <CssBaseline/>
+            <Snackbar
+                    // anchorOrigin={{ vertical, horizontal }}
+                    open={snackOpen}
+                    onClose={handleSnackClose}
+                    autoHideDuration={3000}
+            >
+                <Alert severity="success" 
+                onClose={handleSnackClose}
+                >
+          Recording Saved!
+        </Alert>
+            </Snackbar>
             <Paper square className={classes.paper}>
 
 

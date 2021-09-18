@@ -23,8 +23,10 @@ export default function RecorderContainer({
 
                                           }) {
     const classes = useClasses()
+    
     return (
         <React.Fragment>
+           
             {isDrawerOpen && <RecordingDashboard
                 paused={paused} setDurationMilliSec={setDurationMilliSec}
                 durationMilliSec={durationMilliSec} open={open} recordingName={recordingName}
