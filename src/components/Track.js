@@ -83,7 +83,9 @@ export default function Track({url, title, count, handleDelete}) {
                     <WaveSurfer onMount={handleWSMount}>
                         <WaveForm waveColor={'f4f2f2'} cursorColor={'#00000000'} progressColor={'#EA1073'} height={50}
                                   id={`waveform-${count}`} fillParent={false} responsive={true}
-                                  pixelRatio={1} barHeight={3}
+                                //   pixelRatio={1}
+                                backend={'MediaElement'}
+                                  barHeight={3}
                                   >
                         </WaveForm>
                     </WaveSurfer>
