@@ -126,7 +126,10 @@ export default function App() {
                     url: blobUrl
                 }
                 return JSON.parse(JSON.stringify(prevState))
-            })
+            }),
+            blobPropertyBag:{
+                type: 'audio/ogg; codecs=opus'
+            }
         });
 
     const deleteTrack = (title) => {
