@@ -117,9 +117,12 @@ export default function App() {
   const matches = useMediaQuery("(min-width:769px)");
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  let [tracks, setTracks] = React.useState({
-    // 'test_track': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
-  });
+  // let [tracks, setTracks] = React.useState({
+  //   // 'test_track': {url: 'https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3'},
+  // });
+  let [tracks, setTracks] = React.useState([
+    "https://www.mfiles.co.uk/mp3-downloads/gs-cd-track2.mp3",
+  ]);
   let [paused, setPaused] = React.useState(false);
   let [durationMilliSec, setDurationMilliSec] = React.useState(milliSecElapsed);
 
@@ -139,14 +142,16 @@ export default function App() {
     audio: true,
   });
   React.useEffect(() => {
-    if (mediaBlobUrl && recordingName) {
+    // if (mediaBlobUrl && recordingName) {
+    if (mediaBlobUrl) {
       setTracks((prev) => {
-        if (!Object.keys(prev).includes(mediaBlobUrl)) {
-          prev[mediaBlobUrl] = {
-            title: recordingName,
-          };
+        if (prev && !prev.includes(mediaBlobUrl)) {
+          // prev[mediaBlobUrl] = {
+          //   title: recordingName,
+          // };
+          prev.push(mediaBlobUrl);
         }
-        return JSON.parse(JSON.stringify(prev));
+        return prev.slice();
       });
     }
   }, [mediaBlobUrl, recordingName]);
@@ -161,7 +166,8 @@ export default function App() {
   const handleDrawerOpen = () => {
     setOpen(true);
     setRecordingName(
-      `New_Idea_${Object.entries(tracks).length + 1}_${formattedDateTime()}`
+      // `New_Idea_${Object.entries(tracks).length + 1}_${formattedDateTime()}`
+      `New_Idea_${tracks.length + 1}_${formattedDateTime()}`
     );
     startRecording();
   };
@@ -212,21 +218,21 @@ export default function App() {
           className={clsx(classes.list, { [classes.listPadding]: !matches })}
         >
           {matches && <ListItemText>Desktop View</ListItemText>}
-          {Object.entries(tracks).map(([url, { title }], i) => (
-            <Track
-              url={url}
-              title={title}
-              key={title}
-              count={i}
-              handleDelete={deleteTrack}
-            />
-          ))}
-          {!Object.entries(tracks).length && (
+          {tracks && tracks.length ? (
+            tracks.map((url, i) => (
+              <Track
+                url={url}
+                title={`New recording ${i}`}
+                key={url}
+                count={i}
+                handleDelete={deleteTrack}
+              />
+            ))
+          ) : (
             <Typography variant={"h4"} align={"center"}>
               No items
             </Typography>
           )}
-          {/* TODO: overlay should only be in mobile view*/}
           {!matches && (
             <Box
               className={clsx(classes.overlay, {
