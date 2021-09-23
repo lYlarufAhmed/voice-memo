@@ -128,7 +128,7 @@ export default function App() {
                 return JSON.parse(JSON.stringify(prevState))
             }),
             blobPropertyBag:{
-                type: 'audio/ogg; codecs=opus'
+                type: 'audio/*'
             }
         });
 
