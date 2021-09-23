@@ -145,7 +145,7 @@ export default function App() {
     // if (mediaBlobUrl && recordingName) {
     if (mediaBlobUrl) {
       setTracks((prev) => {
-        if (prev && !prev.includes(mediaBlobUrl)) {
+        if (!prev.includes(mediaBlobUrl)) {
           // prev[mediaBlobUrl] = {
           //   title: recordingName,
           // };
@@ -218,7 +218,7 @@ export default function App() {
           className={clsx(classes.list, { [classes.listPadding]: !matches })}
         >
           {matches && <ListItemText>Desktop View</ListItemText>}
-          {tracks && tracks.length ? (
+          {tracks.length ? (
             tracks.map((url, i) => (
               <Track
                 url={url}

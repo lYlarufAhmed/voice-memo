@@ -92,6 +92,7 @@ export default function Track({ url, title, count, handleDelete }) {
               id={`waveform-${count}`}
               fillParent={false}
               responsive={true}
+              backend={"MediaElement"}
               barHeight={3}
             ></WaveForm>
           </WaveSurfer>
