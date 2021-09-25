@@ -2,16 +2,16 @@ import React, {
     useCallback, useEffect, useMemo,
     useRef, useState,
 } from "react";
-import styled from "styled-components";
 import {WaveSurfer, WaveForm} from "wavesurfer-react";
 import MicrophonePlugin from "wavesurfer.js/src/plugin/microphone";
 
 
-const AppWrapper = styled.div`
-  font-family: sans-serif;
-  text-align: center;
-  width: 100%;
-`;
+
+const ContainerStyle = {
+    fontFamily: 'sans-serif',
+    textAlign: 'center',
+    width: '100%'
+}
 
 
 export default function Recorder({open, paused}) {
@@ -55,7 +55,7 @@ export default function Recorder({open, paused}) {
 
 
     return (
-        <AppWrapper>
+        <div style={ContainerStyle}>
             <WaveSurfer plugins={plugins} onMount={handleWSMount}>
                 <WaveForm cursorColor={'#00000000'} height={100} barGap={2} barWidth={3} id="rec-waveform"
                     fillParent={true} responsive={true} barMinHeight={1}
@@ -63,7 +63,7 @@ export default function Recorder({open, paused}) {
                 >
                 </WaveForm>
             </WaveSurfer>
-        </AppWrapper>
+        </div>
     );
 }
 

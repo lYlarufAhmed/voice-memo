@@ -25,11 +25,11 @@ export default function RecordingDashboard({paused, open, durationMilliSec, setD
             <Typography variant={'h6'} color={'textPrimary'} gutterBottom>
                 {recordingName}
             </Typography>
-            <Typography variant={'subtitle2'} color={'textPrimary'}>
+            <Typography variant={'h1'} color={'textPrimary'}>
                 {getTimeComponents(durationMilliSec)
                     .map(c => c.toString().padStart(2, '0'))
                     .join(':')}
-                <Recorder open={open} paused={paused}/>
+                {/*<Recorder open={open} paused={paused}/>*/}
             </Typography>
         </Container>
     )
