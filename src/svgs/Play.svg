@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="70px" height="70px" viewBox="0 0 111 111" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>Play Button</title>
-    <g id="Play-Button" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <circle id="Oval-Copy-5" stroke="#D6D6D6" stroke-width="6" cx="55.5" cy="55.5" r="45.5"></circle>
-        <polygon id="Triangle-Copy-4" fill="#EA1073" transform="translate(61.500000, 55.500000) rotate(90.000000) translate(-61.500000, -55.500000) " points="61.5 33 84 78 39 78"></polygon>
-    </g>
-</svg>

@@ -1,0 +1,60 @@
+.g-main-detail-history {
+    padding-bottom: 42px;
+}
+
+.g-main-detail-history .table .table-body .table-cell > div {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.bold-size {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: Lato, sans-serif, Libre Baskerville;
+}
+
+.light-size {
+    opacity: 80%;
+    font-family: Lato, sans-serif, Libre Baskerville;
+}
+
+.mother-box {
+    background-color: #f2f2f2;
+}
+
+.my-button {
+    background: transparent;
+    border: none;
+}
+
+.my-button:hover {
+    opacity: 90%;
+}
+
+
+@media screen and (max-width: 556px) {
+    .bold-size {
+        font-size: 15px;
+    }
+
+    .res-container {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    .history-filter-group {
+        gap: 2rem
+    }
+
+    .history-filter-group .react-date-picker {
+        flex: 1 !important;
+    }
+
+    /*.history-filter-group .col-lg-6.col-sm-12 {*/
+    /*    display: flex !important;*/
+    /*    align-items: center !important;*/
+    /*}*/
+}

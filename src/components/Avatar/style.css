@@ -1,0 +1,73 @@
+div.avatar-modal > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.avatar-modal > div > div {
+  overflow: auto !important;
+}
+
+div.user-avatar {
+  position: relative;
+}
+
+div.user-avatar .avatar-hover {
+  display: none;
+  cursor: pointer;
+}
+
+div.user-avatar:hover .avatar-hover {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  background: #24242486;
+}
+
+div.user-avatar .avatar-hover > .hover-icon {
+  display: none;
+}
+
+div.user-avatar:hover .avatar-hover > .hover-icon {
+  display: block;
+  width: 30%;
+  height: 30%;
+  max-width: 40px;
+  max-height: 40px;
+}
+
+div.user-avatar:hover .avatar-hover > span {
+  color: white;
+  text-transform: uppercase;
+}
+
+.avatar-badge {
+  position: absolute;
+  cursor: pointer;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1;
+}
+
+.avatar-badge.photo-badge {
+  font-size: 48px;
+  padding: 4px;
+  background: #00bcd4;
+  border-radius: 50px;
+  border: 3px solid white;
+  color: white;
+}
+
+.avatar-badge.star-badge {
+  font-size: 24px;
+  color: #f7ac02;
+  right: -2px;
+  bottom: -2px;
+}
