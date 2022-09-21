@@ -1,0 +1,286 @@
+.signup .back {
+    top: -30px;
+}
+
+.signup_form {
+    width: 860px;
+    min-height: 680px;
+    padding: 24px 87px;
+    background-color: #fff;
+    border-radius: 50px;
+    margin: auto;
+    position: relative;
+    margin-top: 81px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.signup .wrap--step-num {
+    text-align: center;
+    padding-bottom: 22px;
+}
+
+.wrap--step-num .list-num:first-child {
+    margin-left: 0px;
+}
+
+.wrap--step-num .list-num {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #ff8361;
+    border-radius: 4em;
+    margin-left: 32px;
+    cursor: default;
+    -webkit-user-select: none; /* Chrome all / Safari all */
+    -moz-user-select: none; /* Firefox all */
+    -ms-user-select: none; /* IE 10+ */
+    user-select: none;
+}
+
+.wrap--step-num .list-num p {
+    font-size: 16px;
+    line-height: 19px;
+    padding-left: 1px;
+    color: #ff8361;
+    margin: 0;
+}
+
+.wrap--step-num .title--step-num {
+    color: #ff8361;
+    font-size: 14px;
+    margin-top: 9px;
+}
+
+.signup .signup_form .form-container {
+    flex: 1;
+}
+
+.signup .signup_form .form-container .signup_form--bottom {
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+}
+
+.signup_form--bottom .wrap--signup-img {
+    width: 55%;
+    display: block;
+    margin-top: 20px;
+    align-self: flex-start;
+}
+
+.signup_form--bottom .wrap--signup-img .image-gallery .image-gallery-slides > .image-gallery-slide {
+    background: transparent;
+    transform: none !important;
+    opacity: 0 !important;
+    transition: opacity 1000ms ease !important;
+}
+
+.signup_form--bottom .wrap--signup-img .image-gallery .image-gallery-slides > .image-gallery-slide.center {
+    opacity: 1 !important;
+    transition: opacity 1000ms ease !important;
+}
+
+.signup_form--bottom .wrap--signup-img .image-gallery-image {
+    height: 380px;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+
+.signup_form--bottom .wrap--signup-img .image-gallery-image img {
+    max-height: 380px;
+    max-width: 240px;
+    object-fit: contain;
+    margin: auto;
+    display: block;
+}
+
+.signup_form--bottom .wrap-form {
+    width: 45%;
+    display: block;
+}
+
+.signup_form--bottom .wrap-form .step1 {
+    padding-top: 34px;
+}
+
+.signup_form--bottom .wrap-form .steps_input {
+    margin-top: 8px;
+    margin-bottom: 0px;
+    font-size: 15px;
+    /* height: 50px !important; */
+}
+
+.signup_form--bottom .wrap-form .button--signup-step {
+    position: relative;
+    width: 174px;
+    height: 40px;
+    margin-top: 30px;
+}
+
+/* Step 2 */
+.signup_form--bottom .step2 .su-state .su-state-select,
+.signup_form--bottom .step2 .su-country .su-country-select {
+    height: 33px;
+    width: 100%;
+}
+
+/* .signup_form--bottom .wrap-form .su-state, .signup_form--bottom .wrap-form .su-country{
+  width: 50%;
+  margin-left: 7px;
+} */
+.signup_form--bottom .wrap-form .su-state-select,
+.signup_form--bottom .wrap-form .su-country-select,
+.signup_form--bottom .su-ques-select {
+    color: rgb(135, 135, 135);
+}
+
+.signup_form--bottom .su-ques-select {
+    margin-top: 16px;
+}
+
+.signup_form--bottom .su-state-select em,
+.signup_form--bottom .su-country-select em,
+.signup_form--bottom .su-ques-select em {
+    font-style: normal;
+}
+
+.signup_form--bottom .wrap-form .MuiSelect-select-21,
+.signup_form--bottom .wrap-form .MuiSelect-select-21 {
+    padding-bottom: 1px;
+}
+
+/* Thanks */
+.thanks {
+    text-align: center !important;
+    padding: 0 40px !important;
+}
+
+.thanks h3 {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 24px;
+}
+
+.thanks p {
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.thanks .thx-text {
+    margin-bottom: 86px;
+}
+
+.thanks p:first-child {
+    margin-bottom: 0;
+    margin-top: 28px;
+}
+
+/* Responsive */
+@media screen and (max-width: 880px) {
+    .signup {
+        padding: 0 50px;
+    }
+
+    .signup_form {
+        width: 100%;
+        padding: 16px 36px;
+        min-height: 540px;
+    }
+
+    .thanks {
+        padding: 0px 24px;
+    }
+
+    .signup_form--bottom .wrap-form .button.gradient {
+        height: 46px;
+        font-size: 14px;
+        width: 168px;
+    }
+
+    .signup .signup_form .form-container .signup_form--bottom {
+        flex-direction: column;
+    }
+
+    .signup_form--bottom .wrap--signup-img {
+        height: 190px;
+        width: 100%;
+        margin: auto;
+    }
+
+    .signup_form--bottom .wrap--signup-img .image-gallery-image {
+        height: 190px;
+    }
+
+    .signup_form--bottom .wrap--signup-img .image-gallery-image img {
+        max-height: 190px;
+        max-width: 120px;
+    }
+
+    .signup_form--bottom .wrap-form {
+        width: 100%;
+        padding: 0 40px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .signup_form--bottom .selecthalf {
+        text-align: left;
+    }
+
+    .signup_form--bottom .step2 .su-state .su-state-select,
+    .signup_form--bottom .step2 .su-country .su-country-select {
+        text-align: left;
+    }
+
+    .signup_form--bottom .wrap-form .lastName .MuiInput-root-15 {
+        width: 100%;
+    }
+
+    .signup_form--bottom .wrap-form .su-ques {
+        text-align: left;
+    }
+
+    .thanks h3 {
+        line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .signup {
+        padding: 0 10px;
+    }
+
+    .thanks {
+        padding: 0px 8px;
+    }
+
+    .signup_form--bottom .selecthalf,
+    .signup_form--bottom .wrap-form .steps_input {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .signup_form--bottom .wrap-form .su-ques {
+        font-size: 13px !important;
+    }
+
+    .thanks {
+        padding: 0px;
+    }
+
+    .signup_form--bottom .wrap-form {
+        padding: 0 10px;
+    }
+}

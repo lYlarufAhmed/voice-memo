@@ -1,0 +1,306 @@
+.FaithmoAuth__wrapper {
+    max-width: 1024px;
+    min-width: 320px;
+    width: 100%;
+    margin: 30px auto 30px auto;
+    position: relative;
+    background-color: white;
+    padding: 0px;
+    border-radius: 32px;
+    border: 0px;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.FaithmoAuth__left {
+    width: 320px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    background-color: #9bb5cc;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    overflow: hidden;
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.54)
+}
+
+.FaithmoAuth__logo {
+    max-width: 144px;
+    padding: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.FaithmoAuth__content {
+    color: white;
+    font-size: 18px;
+    flex: 1;
+}
+
+.FaithmoAuth__badges {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.FaithmoAuth__badge {
+    margin: 8px;
+    height: 48px;
+    object-fit: cover;
+    width: 160px;
+    border-radius: 1.1rem;
+}
+
+.FaithmoAuth__bottom {
+    /*padding-top: 20px;*/
+    transform: translateY(100%);
+    color: #204b70;
+    font-size: 1.2em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.FaithmoAuth__terms {
+    color: #007bff;
+}
+
+[class*='Toast__toast_'] {
+    max-width: 1024px;
+    min-width: 320px;
+    width: 100%;
+    margin: 4px auto;
+    padding: 10px;
+    background-color: steelblue;
+    border-radius: 8px;
+    border: 0px;
+    box-shadow: 1px 1px 2px 0px lightgrey;
+    position: relative;
+}
+
+[class*='Toast__toast_'] [class*='Toast__toastClose'] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background-image: url('../../assets/images/close-x.png');
+    background-size: contain;
+}
+
+.FaithmoAuth__right {
+    flex: 1;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+}
+
+[class*='Form__formContainer'] {
+    position: relative;
+    background-color: white;
+    padding: 64px 48px;
+    border: 0px;
+    box-shadow: none;
+    margin: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+[class*='Form__formContainer'] .close-button-container {
+    position: absolute;
+    display: block;
+    right: 40px;
+    top: 40px;
+}
+
+[class*='Form__formContainer'] .close-button-container > .close-button {
+    position: relative;
+    display: block;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+[class*='Form__formContainer'] > [class*='Form__formSection'] {
+    flex: 1;
+    width: auto;
+    height: auto;
+    transition: all 0.5s;
+    overflow: hidden;
+}
+
+[class*='Form__formContainer'] > [class*='Form__formSection'] [class*='Anchor__a'] {
+    cursor: pointer;
+    color: cadetblue;
+}
+
+[class*='Form__formContainer'] > [class*='Form__formSection'] [class*='Anchor__a']:hover {
+    color: lightblue;
+}
+
+[class*='Form__formContainer'] > [class*='Form__formSection'] [class*='Section__sectionBody'] {
+    position: relative;
+    min-height: 80px;
+    gap: 2rem;
+}
+
+[class*='Form__formContainer']
+> [class*='Form__formSection']
+[class*='Section__sectionBody']
+[class*='Form__formField'] {
+    margin-bottom: 20px;
+}
+
+[class*='Form__formContainer']
+> [class*='Form__formSection']
+[class*='Section__sectionBody']
+[class*='Form__formField']
+[class*='Input__input'] {
+    width: 100%;
+}
+
+[class*='Form__formContainer'] > [class*='Form__formSection'] [class*='Section__sectionHeader'] {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+[class*='Form__formContainer'] > [class*='Form__formSection'] [class*='Section__sectionHeader'] > img {
+    width: 38px;
+    height: auto;
+}
+
+[class*='Form__formContainer']
+> [class*='Form__formSection']
+[class*='Section__sectionHeader']
+> [class*='Section__sectionHeaderContent'] {
+    font-size: 1.75rem;
+}
+
+[class*='Form__formContainer'] > [class*='Form__formSection'] [class*='Section__sectionFooter_'] {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+[class*='Form__formContainer'] > [class*='Form__formSection'] [class*='Section__sectionFooter_'] button {
+    background: rgb(114, 114, 114);
+    border: none;
+    height: 48px;
+    width: 180px;
+    font-size: 17px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border-radius: 1em;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+[class*='Form__formContainer']
+> [class*='Form__formSection']
+[class*='Section__sectionFooter_']
+[class*='Section__sectionFooterPrimaryContent'] {
+    margin-top: 20px;
+}
+
+[class*='Form__formContainer']
+> [class*='Form__formSection']
+[class*='Section__sectionFooter_']
+[class*='Section__sectionFooterSecondaryContent'] {
+    margin-top: 20px;
+}
+
+.Form__buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid gray;
+    padding: 0px 0px 0px 12px;
+    margin: 0px 0px 0px 12px;
+}
+
+input#email, input#password {
+    padding: .7rem 0;
+}
+
+@media screen and (max-width: 867px) {
+    [class*='Form__formContainer'] {
+        flex-direction: column;
+    }
+
+    #history-date-filter-group {
+        gap: 1rem;
+    }
+
+    .Form__buttonsContainer {
+        border-left: none;
+        border-top: 2px solid gray;
+        padding: 12px 0px 0px 0px;
+        margin: 12px 0px 0px 0px;
+    }
+
+    [class*='Form__formContainer'] {
+        padding: 48px 32px;
+    }
+
+    /*[class*='Form__formContainer']*/
+    /*> [class*='Form__formSection']*/
+    /*[class*='Section__sectionHeader']*/
+    /*> [class*='Section__sectionHeaderContent'] {*/
+    /*    margin: 0;*/
+    /*}*/
+    /*[class*='Form__formContainer'] > [class*='Form__formSection'] [class*='Section__sectionHeader'] {*/
+    /*    margin-bottom: 0;*/
+    /*}*/
+}
+
+@media screen and (max-width: 678px) {
+    .FaithmoAuth__left {
+        width: auto;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+    }
+
+    .FaithmoAuth__right {
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+
+    .FaithmoAuth__badges {
+        flex-direction: row;
+    }
+
+    .FaithmoAuth__wrapper {
+        flex-direction: column;
+    }
+
+    [class*='Form__formContainer'] {
+        padding: 24px;
+    }
+}

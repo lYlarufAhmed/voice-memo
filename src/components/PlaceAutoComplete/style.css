@@ -1,0 +1,25 @@
+.place-autocomplete-dropdown-container {
+  position: absolute;
+  background: white;
+  width: 100%;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+.place-autocomplete-dropdown-container > div.suggestion-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 4px 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.place-autocomplete-dropdown-container > div.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.place-autocomplete-dropdown-container > div.suggestion-item.active {
+  background-color: rgba(0, 0, 0, 0.15);
+}

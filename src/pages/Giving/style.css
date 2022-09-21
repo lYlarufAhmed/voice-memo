@@ -1,0 +1,245 @@
+.button.btn-activate {
+    padding: 10px 30px;
+    width: auto;
+    height: auto;
+}
+
+.giving.card > .card-body {
+    padding: 3rem;
+}
+
+.giving.card .giving-list {
+    list-style: none;
+}
+
+.giving.card .payment-form p.title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 0.4rem;
+}
+
+.giving.card .payment-form .securityCode {
+    line-height: 50px;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    color: #fe9169;
+}
+
+.MuiInputAdornment-positionStart{
+    margin-right: 0 !important;
+}
+
+.MuiInputAdornment-positionStart > .MuiTypography-root.MuiTypography-body1.MuiTypography-colorTextSecondary {
+    left: 5px !important;
+
+}
+
+@media screen and (max-width: 768px) {
+    .giving.card > .card-body {
+        padding: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .margin-btm-sm {
+        margin-bottom: 3rem !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .giving.card .payment-form p.title {
+        font-size: 16px;
+    }
+}
+
+
+.action-group.membership-action p {
+    margin-top: 50px;
+    margin-bottom: 0;
+}
+
+.action-group.membership-action span {
+    font-size: 14px;
+    color: #fe9168;
+    text-transform: uppercase;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+#giving-container {
+    width: 80%;
+}
+
+/* Membership Edit */
+.membership-edit .form-control {
+    height: 50px !important;
+}
+
+.membership-edit .card-header .title p {
+    margin-left: 48px;
+}
+
+.membership-edit .card-body {
+    padding: 52px 80px;
+    min-height: 240px;
+    position: relative;
+}
+
+.membership-edit .card-body .card-block {
+    padding: 32px 0 0 0;
+}
+
+.membership-edit .card-choose ul {
+    list-style: none;
+}
+
+.membership-edit .card-choose ul li p {
+    margin-bottom: 0;
+}
+
+.membership-edit .card-choose ul li {
+    border-top: 2px solid #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+}
+
+.membership-edit .card-choose ul li:last-child {
+    padding-top: 32px;
+    border-bottom: 2px solid #f2f2f2;
+}
+
+.membership-edit .card-choose li label {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.membership-edit .card-detail {
+    margin-top: 40px;
+}
+
+.membership-edit .card-detail .btn-group .btn {
+    height: 50px;
+    font-style: italic;
+    color: #3d3d3d;
+    border-radius: 0;
+}
+
+.membership-edit .securityCode {
+    line-height: 50px;
+    text-decoration: underline;
+    letter-spacing: 1px;
+    color: #fe9169;
+}
+
+/* -- radio Button style */
+[type='radio']:checked,
+[type='radio']:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type='radio']:checked + label,
+[type='radio']:not(:checked) + label {
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #3d3d3d;
+}
+
+[type='radio']:checked + label:before,
+[type='radio']:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #c2c2c2;
+    border-radius: 100%;
+    background: #fff;
+}
+
+[type='radio']:checked + label:after,
+[type='radio']:not(:checked) + label:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: #fe8462;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type='radio']:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+[type='radio']:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+@media screen and (max-width: 768px) {
+    /* MemberShip Edit */
+    .membership-edit #first_name {
+        margin-bottom: 16px;
+    }
+
+
+}
+
+@media screen and (max-width: 1150px) {
+    #total-paper {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .membership-edit .card-body {
+        padding: 52px 40px;
+    }
+}
+
+@media screen and (max-width: 598px) {
+    .membership-edit .card-choose ul li:first-child {
+        display: block;
+        height: auto;
+        line-height: 54px;
+    }
+
+    #giving-container {
+        width: 100%;
+    }
+
+    #giving-grid {
+        padding: 1rem !important;
+    }
+
+    .membership-edit .card-choose ul li:first-child p {
+        text-align: center;
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .membership-edit .card-body {
+        padding: 52px 20px;
+    }
+
+    .membership-edit .form-group label,
+    .membership-edit p.title {
+        font-size: 16px;
+    }
+}

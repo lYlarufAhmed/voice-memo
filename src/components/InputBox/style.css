@@ -1,0 +1,25 @@
+.form-control::placeholder {
+    opacity: .5;
+    font-style: normal !important;
+}
+
+input {
+    border: 1px solid rgb(186, 233, 255);
+    background-color: transparent;
+    border-radius: .3rem;
+    padding: .8rem;
+    transition: all .2s linear;
+    width: 122px;
+}
+
+input:focus {
+    border-color: var(--color_18);
+}
+
+input.lg {
+    width: 281px;
+}
+
+input.md {
+    width: 136px;
+}

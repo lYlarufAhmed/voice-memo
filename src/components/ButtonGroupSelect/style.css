@@ -1,0 +1,22 @@
+.tab-button-group {
+  display: block;
+  position: relative;
+}
+
+.tab-button-group .button:not(:first-child):not(:last-child) {
+  border-radius: 0px !important;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.tab-button-group .button:first-child {
+  border-top-right-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+  margin-right: 0px !important;
+}
+
+.tab-button-group .button:last-child {
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  margin-left: 0px !important;
+}

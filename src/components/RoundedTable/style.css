@@ -1,0 +1,96 @@
+.table-count {
+    font-weight: bold;
+    padding: 0.5em 1em;
+    display: block;
+    margin: 0 0 -2.3em;
+}
+
+.table-count + div.table.card {
+    margin-top: 34px;
+}
+
+div.table.card .table-row > .table-cell > div {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 100%;
+    word-wrap: anywhere;
+}
+
+div.table.card .table-row > .table-cell > div.align-left {
+    justify-content: flex-start;
+    margin-left: 12px !important;
+}
+
+div.table.card .table-header.table-row > .table-cell {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.table-pagination {
+    position: relative;
+}
+
+.table-pagination .table-show {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 18px;
+    color: #ff9871;
+    display: flex;
+}
+
+.table-pagination .table-show {
+    line-height: 24px;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.table-pagination .table-show span {
+    letter-spacing: 1px;
+    font-weight: bold;
+    padding-right: 6px;
+}
+
+.table-pagination .table-show ul {
+    display: flex;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.table-pagination .table-show ul li.page-item {
+    list-style-type: none;
+    margin-left: 6px;
+    margin-right: 6px;
+    width: 28px;
+    height: 28px;
+}
+
+.table-pagination .table-show ul li.page-item:focus,
+.table-pagination .table-show ul li.page-item:hover {
+    color: #000;
+    cursor: pointer;
+}
+
+.table-pagination .table-show ul li.page-item.active {
+    border: 1px solid #ff9871;
+    border-radius: 9999px;
+}
+
+@media screen and (max-width: 1000px) {
+    .table-pagination .table-show {
+        position: inherit;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 636px) {
+    .table div{
+        font-size: 11px !important;
+        padding: inherit !important;
+    }
+}
